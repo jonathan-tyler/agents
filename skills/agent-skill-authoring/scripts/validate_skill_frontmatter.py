@@ -18,10 +18,31 @@ SUPPORTED_TOP_LEVEL_KEYS = {
     "metadata",
     "allowed-tools",
 }
+SUPPORTED_METADATA_KEYS = {
+    "author",
+    "version",
+}
+EMAIL_PATTERN = re.compile(r"\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b")
+LOCAL_PATH_PATTERN = re.compile(
+    r"(^~[/\\])|(^/)|(^[A-Za-z]:[/\\])|(^\\\\)|(/home/|/Users/|/mnt/|/etc/|/var/)"
+)
 
 
 def _strip_quotes(value: str) -> str:
     return value.strip().strip('"').strip("'")
+
+
+def _detect_sensitive_value_kind(value: str) -> str | None:
+    if EMAIL_PATTERN.search(value):
+        return "email address"
+
+    if value.lower().startswith("file://"):
+        return "local file path"
+
+    if LOCAL_PATH_PATTERN.search(value):
+        return "local file path"
+
+    return None
 
 
 def parse_frontmatter(text: str) -> tuple[dict[str, str | dict[str, str]], str | None]:
@@ -120,6 +141,9 @@ def validate_skill(skill_dir: Path) -> list[str]:
     if not name:
         issues.append("missing name")
     else:
+        sensitive_kind = _detect_sensitive_value_kind(name)
+        if sensitive_kind is not None:
+            issues.append(f"name must not contain {sensitive_kind}")
         if not (1 <= len(name) <= 64):
             issues.append("name length out of range (1-64)")
         if not NAME_PATTERN.match(name):
@@ -129,27 +153,47 @@ def validate_skill(skill_dir: Path) -> list[str]:
 
     if not description:
         issues.append("missing description")
-    elif len(description) > 1024:
-        issues.append("description too long (>1024)")
+    else:
+        sensitive_kind = _detect_sensitive_value_kind(description)
+        if sensitive_kind is not None:
+            issues.append(f"description must not contain {sensitive_kind}")
+        if len(description) > 1024:
+            issues.append("description too long (>1024)")
 
     compatibility = frontmatter.get("compatibility")
     if compatibility is not None and not isinstance(compatibility, str):
         issues.append("compatibility must be a string")
         compatibility = ""
-    if compatibility is not None and not (1 <= len(compatibility) <= 500):
-        issues.append("compatibility length out of range (1-500)")
+    if compatibility is not None:
+        sensitive_kind = _detect_sensitive_value_kind(compatibility)
+        if sensitive_kind is not None:
+            issues.append(f"compatibility must not contain {sensitive_kind}")
+        if not (1 <= len(compatibility) <= 500):
+            issues.append("compatibility length out of range (1-500)")
 
     license_value = frontmatter.get("license")
     if license_value is not None:
         if not isinstance(license_value, str):
             issues.append("license must be a string")
-        elif not license_value.strip():
-            issues.append("license must be non-empty if provided")
+        else:
+            sensitive_kind = _detect_sensitive_value_kind(license_value)
+            if sensitive_kind is not None:
+                issues.append(f"license must not contain {sensitive_kind}")
+            if not license_value.strip():
+                issues.append("license must be non-empty if provided")
 
     metadata = frontmatter.get("metadata")
     if metadata is not None and not isinstance(metadata, dict):
         issues.append("metadata must be a key-value map")
     elif isinstance(metadata, dict):
+        unknown_metadata_keys = sorted(
+            meta_key for meta_key in metadata if meta_key not in SUPPORTED_METADATA_KEYS
+        )
+        if unknown_metadata_keys:
+            issues.append(
+                "unsupported metadata field(s): " + ", ".join(unknown_metadata_keys)
+            )
+
         for meta_key, meta_value in metadata.items():
             if not meta_key:
                 issues.append("metadata keys must be non-empty strings")
@@ -157,6 +201,13 @@ def validate_skill(skill_dir: Path) -> list[str]:
             if not isinstance(meta_value, str):
                 issues.append(
                     f"metadata value for '{meta_key}' must be a string"
+                )
+                continue
+
+            sensitive_kind = _detect_sensitive_value_kind(meta_value)
+            if sensitive_kind is not None:
+                issues.append(
+                    f"metadata value for '{meta_key}' must not contain {sensitive_kind}"
                 )
 
         version = metadata.get("version")
@@ -170,8 +221,12 @@ def validate_skill(skill_dir: Path) -> list[str]:
     if allowed_tools is not None:
         if not isinstance(allowed_tools, str):
             issues.append("allowed-tools must be a string")
-        elif not allowed_tools.strip():
-            issues.append("allowed-tools must be non-empty if provided")
+        else:
+            sensitive_kind = _detect_sensitive_value_kind(allowed_tools)
+            if sensitive_kind is not None:
+                issues.append(f"allowed-tools must not contain {sensitive_kind}")
+            if not allowed_tools.strip():
+                issues.append("allowed-tools must be non-empty if provided")
 
     line_count = text.count("\n") + 1
     if line_count > 500:
