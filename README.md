@@ -44,4 +44,4 @@
 
 🟨 javascript
 
-- Apply JS/TS tooling defaults for package management, linting, formatting, and dev containers.
+- Apply JS/TS tooling defaults for package management, linting, and formatting.
