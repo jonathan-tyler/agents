@@ -4,8 +4,7 @@ description: Apply Python coding and testing preferences, including type hints a
 compatibility: Personal coding preferences for environments using Agent Skills SKILL.md.
 metadata:
   author: jonathan-tyler
-  version: "1.0.0"
-  migratedFrom: /mnt/c/Users/daily/AppData/Roaming/Code/User/prompts/python.instructions.md
+  version: "1.0.1"
 ---
 
 # Python Skill

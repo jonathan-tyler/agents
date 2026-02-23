@@ -4,8 +4,7 @@ description: Enforce `.gitignore` safety preferences related to VS Code workspac
 compatibility: Personal coding preferences for environments using Agent Skills SKILL.md.
 metadata:
   author: jonathan-tyler
-  version: "1.0.0"
-  migratedFrom: /mnt/c/Users/daily/AppData/Roaming/Code/User/prompts/gitignore.instructions.md
+  version: "1.0.1"
 ---
 
 # Gitignore Skill

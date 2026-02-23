@@ -4,8 +4,7 @@ description: Apply JavaScript and TypeScript tooling defaults for package manage
 compatibility: Personal coding preferences for environments using Agent Skills SKILL.md.
 metadata:
   author: jonathan-tyler
-  version: "1.0.1"
-  migratedFrom: /mnt/c/Users/daily/AppData/Roaming/Code/User/prompts/javascript.instructions.md
+  version: "1.0.2"
 ---
 
 # JavaScript Skill
