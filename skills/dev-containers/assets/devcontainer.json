@@ -15,6 +15,7 @@
     "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
     "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/${localWorkspaceFolderBasename},type=bind,consistency=cached",
     "mounts": [
+        "type=bind,source=${localEnv:HOME}/.agents,target=${containerWorkspaceFolder}/.agents",
         // Use less restrictive agent allowances only inside dev containers
         "type=bind,source=${localEnv:HOME}/.agents/skills/dev-containers/assets/settings.json,target=/home/developer/.vscode-server/data/Machine/settings.json",
         // Mount shell history, then copy to allow it to grow within the container

@@ -21,7 +21,6 @@ Each new repository should typically include:
 - `.gitignore` (from template)
 - `.devcontainer/devcontainer.json` (from template)
 - `.devcontainer/Containerfile` (from template)
-- `AGENTS.md`
 - `README.md`
 
 ## Template Sources
@@ -35,12 +34,6 @@ Use these existing templates:
 Optional companion file when using the template setup:
 
 - `.devcontainer/settings.json` from `../dev-containers/assets/settings.json`
-
-## AGENTS.md Guidance
-
-- Add concise repository-specific instructions for coding agents.
-- Include project scope, preferred commands, and guardrails.
-- Keep instructions actionable and short.
 
 ## README.md Guidance
 
