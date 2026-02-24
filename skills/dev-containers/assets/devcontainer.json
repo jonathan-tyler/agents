@@ -1,8 +1,9 @@
 {
-    "name": "Project Dev Container",
+    "name": "${localWorkspaceFolderBasename}",
     "build": {
         "dockerfile": "Containerfile",
-        "context": ".."
+        "context": "..",
+        "target": "project"
     },
     "remoteUser": "developer",
     "containerUser": "developer",
@@ -10,7 +11,7 @@
     "runArgs": [
         "--name=${localWorkspaceFolderBasename}-dev",
         "--userns=keep-id",
-        "--security-opt=no-new-privileges",
+        "--security-opt=no-new-privileges"
     ],
     "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
     "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/${localWorkspaceFolderBasename},type=bind,consistency=cached",
@@ -23,7 +24,7 @@
         // Optional: personal starship configuration
         "type=bind,source=${localEnv:HOME}/.config/starship.toml,target=/home/developer/.config/starship.toml,readonly"
     ],
-    "postCreateCommand": "[ -f /tmp/.zsh_history ] && cp /tmp/.zsh_history /home/developer/.zsh_history || true",
+    "postCreateCommand": "[ -f /tmp/.zsh_history ] && cp /tmp/.zsh_history /home/developer/.zsh_history || true; mkdir -p ${containerWorkspaceFolder}/.agents/local-skills",
     "customizations": {
         "vscode": {
             "extensions": [
