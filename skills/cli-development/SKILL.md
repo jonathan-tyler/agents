@@ -1,10 +1,9 @@
 ---
 name: cli-development
 description: Design and implement robust command-line interfaces with clear help text, reliable flags, predictable output, and correct exit behavior. Use when creating or improving CLI tools in any language.
-compatibility: Designed for coding agents and chat implementations that support the Agent Skills SKILL.md format.
 metadata:
   author: jonathan-tyler
-  version: "1.0.0"
+  version: "1.0.1"
 ---
 
 # CLI Development Skill

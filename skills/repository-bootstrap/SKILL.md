@@ -1,10 +1,9 @@
 ---
 name: repository-bootstrap
-description: Create a consistent baseline for a new project or repository. Use when initializing a repo so it includes a .gitignore from templates, a dev container from templates, an AGENTS.md file, and a README.md file.
-compatibility: Personal coding preferences for environments using Agent Skills SKILL.md.
+description: Create a consistent baseline for a new project or repository. Use when initializing or scaffolding a repo.
 metadata:
-	author: jonathan-tyler
-	version: "1.0.0"
+  author: jonathan-tyler
+  version: "1.0.2"
 ---
 
 # Repository Bootstrap Skill

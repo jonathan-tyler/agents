@@ -1,10 +1,9 @@
 ---
 name: markdown
 description: Write and refine Markdown documents that are easy to scan, with key links surfaced early for both humans and agents.
-compatibility: Designed for coding agents and chat implementations that support the Agent Skills SKILL.md format.
 metadata:
   author: jonathan-tyler
-  version: "1.0.0"
+  version: "1.0.1"
 ---
 
 # Markdown Documentation Skill

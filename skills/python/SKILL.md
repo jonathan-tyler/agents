@@ -1,10 +1,10 @@
 ---
 name: python
 description: Apply Python coding and testing preferences, including type hints and pytest conventions. Use when creating, reviewing, or refactoring Python code and tests.
-compatibility: Personal coding preferences for environments using Agent Skills SKILL.md.
+compatibility: Requires Python 3; pytest is required when running the testing guidance in this skill.
 metadata:
   author: jonathan-tyler
-  version: "1.0.1"
+  version: "1.0.2"
 ---
 
 # Python Skill

@@ -1,10 +1,9 @@
 ---
 name: javascript
 description: Apply JavaScript and TypeScript tooling defaults for package management, linting, and formatting. Use when creating or updating JS/TS projects, tooling, or workspace setup.
-compatibility: Personal coding preferences for environments using Agent Skills SKILL.md.
 metadata:
   author: jonathan-tyler
-  version: "1.0.2"
+  version: "1.0.3"
 ---
 
 # JavaScript Skill

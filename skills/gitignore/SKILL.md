@@ -1,10 +1,9 @@
 ---
 name: gitignore
 description: Enforce `.gitignore` safety preferences related to VS Code workspace directories.
-compatibility: Personal coding preferences for environments using Agent Skills SKILL.md.
 metadata:
   author: jonathan-tyler
-  version: "1.0.1"
+  version: "1.0.3"
 ---
 
 # Gitignore Skill

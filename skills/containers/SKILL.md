@@ -1,10 +1,9 @@
 ---
 name: containers
 description: Apply container-related preferences including Podman-first usage, rootless defaults, and container file naming conventions.
-compatibility: Personal coding preferences for environments using Agent Skills SKILL.md.
 metadata:
   author: jonathan-tyler
-  version: "1.0.1"
+  version: "1.0.2"
 ---
 
 # Containers Skill

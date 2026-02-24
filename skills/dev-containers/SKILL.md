@@ -1,10 +1,9 @@
 ---
 name: dev-containers
 description: Create and maintain Development Container configurations with practical defaults, predictable mounts, and container-engine-aware settings.
-compatibility: Designed for repositories that use the Agent Skills SKILL.md standard.
 metadata:
     author: jonathan-tyler
-    version: "1.0.0"
+    version: "1.0.3"
 ---
 
 # Dev Containers Skill
