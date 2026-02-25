@@ -1,17 +1,13 @@
 ---
 name: python
 description: Apply Python coding and testing preferences, including type hints and pytest conventions. Use when creating, reviewing, or refactoring Python code and tests.
-compatibility: Requires Python 3; pytest is required when running the testing guidance in this skill.
+compatibility: "**/*.py, python3, pytest"
 metadata:
   author: jonathan-tyler
   version: "1.0.2"
 ---
 
 # Python Skill
-
-## Scope
-
-- Applies to: `**/*.py`
 
 ## Code Style Guidelines
 

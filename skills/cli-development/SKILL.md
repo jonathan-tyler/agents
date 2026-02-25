@@ -8,44 +8,8 @@ metadata:
 
 # CLI Development Skill
 
-## When to use
+## Preferences
 
-- Creating or extending CLI tools
-- Defining commands, flags, help, and exit behavior
-- Improving scriptability and reliability
-
-## Objectives
-
-- Fast startup
-- Predictable UX
-- Script-friendly behavior
-- Minimal dependency footprint
-
-## Command design checklist
-
-- Define root command and subcommand responsibilities.
-- Prefer positional arguments over `--flag` options where appropriate.
-- Define flags/options, defaults, and validation.
-- Provide clear help examples.
-- Document config precedence: flags > env > config file > defaults.
-
-## UX and reliability rules
-
-- Keep `--help` concise and actionable.
-- Print normal output to stdout and diagnostics/errors to stderr.
-- Return meaningful non-zero exit codes on failure.
-- Avoid hidden global state and non-deterministic behavior.
-- Minimize startup work for short-lived commands.
-
-## Testing focus
-
-- Argument parsing behavior
-- Success and failure paths
-- Edge cases and invalid input
-
-## Output expectations
-
-- Command structure summary.
-- Implementation and tests.
-- Usage examples.
-- Packaging/release notes when distribution matters.
+- WSL2-first design. Treat Windows as a secondary platform.
+- Use dnf if packages are needed
+- Prefer positional space-delimited arguments over `--flag` options where appropriate.

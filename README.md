@@ -6,42 +6,16 @@
 
 ### Meta
 
-🤖 agent-skill-authoring
-
-- Create and validate Agent Skills using the SKILL.md format and metadata rules.
-
-### Init
-
-🌱 repository-bootstrap
-
-- Initialize new repositories with a consistent baseline (.gitignore, dev container, AGENTS.md, and README.md).
-
-🛡️ gitignore
-
-- Enforce safe `.gitignore` practices for VS Code workspace directories.
-
-🧪 dev-containers
-
-- Build and maintain dev container setups with practical defaults and stable mounts.
-
-📦 containers
-
-- Apply Podman-first, rootless container preferences and naming conventions.
+- 🤖 [agent-skill-authoring](./skills/agent-skill-authoring/SKILL.md)
 
 ### Dev
 
-🛠️ cli-development
-
-- Design robust CLIs with clear help text, reliable flags, predictable output, and correct exits.
-
-📝 markdown
-
-- Write scan-friendly Markdown that surfaces key links and resources early.
-
-🐍 python
-
-- Apply Python coding and testing preferences, including type hints and pytest conventions.
-
-🟨 javascript
-
-- Apply JS/TS tooling defaults for package management, linting, and formatting.
+- 🌱 [repository-bootstrap](./skills/repository-bootstrap/SKILL.md)
+- 🛡️ [gitignore](./skills/gitignore/SKILL.md)
+- 🧪 [dev-containers](./skills/dev-containers/SKILL.md)
+- 📦 [containers](./skills/containers/SKILL.md)
+- 🛠️ [cli-development](./skills/cli-development/SKILL.md)
+- 📝 [markdown](./skills/markdown/SKILL.md)
+- 🐍 [python](./skills/python/SKILL.md)
+- 🟨 [javascript](./skills/javascript/SKILL.md)
+- 🔐 [secrets-management](./skills/secrets-management/SKILL.md)

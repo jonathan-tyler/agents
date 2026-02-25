@@ -1,22 +1,23 @@
 ---
 name: javascript
 description: Apply JavaScript and TypeScript tooling defaults for package management, linting, and formatting. Use when creating or updating JS/TS projects, tooling, or workspace setup.
+compatibility: "**/*.{js,jsx,mjs,cjs,ts,tsx}"
 metadata:
   author: jonathan-tyler
-  version: "1.0.3"
+  version: "1.0.4"
 ---
 
 # JavaScript Skill
 
-## Scope
-
-- Applies to: `**/*.{js,jsx,mjs,cjs,ts,tsx}`
-
 ## Rules
 
-- Prefer `pnpm` when package-manager choice is open.
-  artifact and mount the `pnpm` volume to the workspace's `.pnpm` directory.
-- Use `eslint` with the `eslint:recommended` ruleset, and extend it with `prettier`
-  configuration to avoid conflicts with `prettier` formatting.
-- Use `prettier` with a maximum line length of 100 characters, and configure it to
-  work with `eslint` via `eslint-plugin-prettier`.
+Use (non-exclusive):
+- `pnpm`
+- `eslint`
+- `eslint:recommended`
+- `prettier`
+- `eslint-plugin-prettier`
+
+## Assets
+
+- Use [this sample `.prettierrc`](assets/.prettierrc)
