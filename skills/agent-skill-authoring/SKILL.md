@@ -3,7 +3,7 @@ name: agent-skill-authoring
 description: Create and validate Agent Skills using the SKILL.md format, required frontmatter, and practical structure. Use when defining new skills, splitting docs into skill files, or reviewing skill metadata and naming rules.
 metadata:
   author: jonathan-tyler
-  version: "1.0.9"
+  version: "1.0.10"
 ---
 
 # Agent Skill Authoring
@@ -18,7 +18,7 @@ Use this skill when creating or reviewing Agent Skills.
 
 ## New Skills
 
-- Place broadly reusable skills in `.agents/skills`; place project-specific skills or skills containing project-sensitive details in `.agents/local-skills`.
+- Place broadly reusable skills in `.agents/skills`; place project-specific skills or skills containing project-sensitive details in `.agents-local/skills`.
 - Add the skill name to the .agents/README.md.  Avoid suggesting adding any other content to this file.
 - Add reasonable but terse YAML frontmatter, an H1 header with the name of the skill, and an H2 "Rules" header with whatever the user asked you to add and/or nothing else.
 

@@ -8,14 +8,19 @@
 
 - 🤖 [agent-skill-authoring](./skills/agent-skill-authoring/SKILL.md)
 
-### Dev
+### General
+
+- 🧱 [code-organization](./skills/code-organization/SKILL.md)
+- 💬 [code-style](./skills/code-style/SKILL.md)
+- 🎙️ [voice-input-typos](./skills/voice-input-typos/SKILL.md)
+
+### Specific
 
 - 🌱 [repository-bootstrap](./skills/repository-bootstrap/SKILL.md)
-- 🛡️ [gitignore](./skills/gitignore/SKILL.md)
 - 🧪 [dev-containers](./skills/dev-containers/SKILL.md)
 - 📦 [containers](./skills/containers/SKILL.md)
+- 🔐 [secrets-management](./skills/secrets-management/SKILL.md)
 - 🛠️ [cli-development](./skills/cli-development/SKILL.md)
 - 📝 [markdown](./skills/markdown/SKILL.md)
 - 🐍 [python](./skills/python/SKILL.md)
 - 🟨 [javascript](./skills/javascript/SKILL.md)
-- 🔐 [secrets-management](./skills/secrets-management/SKILL.md)

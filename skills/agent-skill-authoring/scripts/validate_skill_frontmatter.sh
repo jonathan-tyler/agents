@@ -1,6 +1,41 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+readonly color_reset='\033[0m'
+readonly color_ok='\033[38;5;108m'
+readonly color_fail='\033[38;5;174m'
+
+supports_color() {
+  if [[ -n "${NO_COLOR:-}" ]]; then
+    return 1
+  fi
+  if [[ ! -t 1 ]]; then
+    return 1
+  fi
+  return 0
+}
+
+print_status_line() {
+  local skill_name="$1"
+  local status="$2"
+  local color=""
+
+  if supports_color; then
+    if [[ "$status" == 'OK' ]]; then
+      color="$color_ok"
+    elif [[ "$status" == 'FAIL' ]]; then
+      color="$color_fail"
+    fi
+  fi
+
+  if [[ -n "$color" ]]; then
+    printf '%s: %b%s%b\n' "$skill_name" "$color" "$status" "$color_reset"
+    return
+  fi
+
+  printf '%s: %s\n' "$skill_name" "$status"
+}
+
 name_pattern='^[a-z0-9]+(-[a-z0-9]+)*$'
 semver_pattern='^(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)(-((0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*)(\.(0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*))*))?(\+([0-9A-Za-z-]+(\.[0-9A-Za-z-]+)*))?$'
 
@@ -102,13 +137,14 @@ parse_frontmatter() {
   fi
 
   first_line="${first_line#$'\ufeff'}"
+  first_line="${first_line%$'\r'}"
   if [[ "$first_line" != '---' ]]; then
     out_error_ref='missing frontmatter'
     return
   fi
 
   local end_index
-  end_index="$(awk 'NR>1 && $0=="---" { print NR; exit }' "$file_path")"
+  end_index="$(awk 'NR>1 { line=$0; sub(/\r$/, "", line); if (line=="---") { print NR; exit } }' "$file_path")"
   if [[ -z "$end_index" ]]; then
     out_error_ref='unterminated frontmatter'
     return
@@ -369,16 +405,18 @@ main() {
   local skill_dir
   for skill_dir in "${skill_dirs[@]}"; do
     local -a issues=()
+    local skill_name
+    skill_name="$(basename "$skill_dir")"
     validate_skill "$skill_dir" issues
     if [[ ${#issues[@]} -gt 0 ]]; then
       has_issues=1
-      printf '%s\n' "$(basename "$skill_dir"): FAIL"
+      print_status_line "$skill_name" 'FAIL'
       local issue
       for issue in "${issues[@]}"; do
         printf '  - %s\n' "$issue"
       done
     else
-      printf '%s\n' "$(basename "$skill_dir"): OK"
+      print_status_line "$skill_name" 'OK'
     fi
   done
 

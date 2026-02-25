@@ -3,7 +3,7 @@ name: repository-bootstrap
 description: Create a consistent baseline for a new project or repository. Use when initializing or scaffolding a repo.
 metadata:
   author: jonathan-tyler
-  version: "1.0.2"
+  version: "1.0.3"
 ---
 
 # Repository Bootstrap Skill
@@ -27,7 +27,7 @@ Each new repository should typically include:
 
 Use these existing templates:
 
-- `.gitignore`: `../gitignore/assets/.gitignore`
+- `.gitignore`: `assets/.gitignore`
 - Dev container config: `../dev-containers/assets/devcontainer.json`
 - Dev container Containerfile: `../dev-containers/assets/Containerfile`
 
@@ -44,3 +44,8 @@ Optional companion file when using the template setup:
 ## Working Rule
 
 - If a user requests a minimal setup, still include all baseline files above unless they explicitly opt out.
+
+## Gitignore Safety Rules
+
+- Never add `.vscode` or `.vscode/` to `.gitignore`.
+- If `.vscode` or `.vscode/` is found in `.gitignore`, explicitly warn the user.
