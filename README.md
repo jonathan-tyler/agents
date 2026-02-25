@@ -4,10 +4,6 @@
 
 ## Skills
 
-### Meta
-
-- 🤖 [agent-skill-authoring](./skills/agent-skill-authoring/SKILL.md)
-
 ### General
 
 - 🧱 [code-organization](./skills/code-organization/SKILL.md)
@@ -16,6 +12,7 @@
 
 ### Specific
 
+- 🤖 [agent-skill-authoring](./skills/agent-skill-authoring/SKILL.md)
 - 🌱 [repository-bootstrap](./skills/repository-bootstrap/SKILL.md)
 - 🧪 [dev-containers](./skills/dev-containers/SKILL.md)
 - 📦 [containers](./skills/containers/SKILL.md)
